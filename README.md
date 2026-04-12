@@ -1,23 +1,11 @@
-# Hi there, I'm Vy Truong 👋
+# Queensland Railway Interactive Map | JavaScript, p5.js, GeoJSON
+1701ICT Creative Coding — Griffith University
 
-Second-year Bachelor of Information Technology (Software Development) 
-student at Griffith University, graduating in 2027.
+## About
+Interactive map visualising Queensland's railway network using p5.js and GeoJSON data. Features hover tooltips showing station name, coordinates and operational status, with multiple train routes rendered in distinct colours.
 
-## 💻 Tech Stack
+## 🌐 Live Demo
+Visit the live site here: https://vy-trg.github.io/qld-railway-map/
 
-| Category | Technologies |
-|---|---|
-| **Languages** | JavaScript, Python, SQL |
-| **Frontend** | HTML, CSS, p5.js |
-| **Database** | MySQL |
-| **Tools** | Git, GitHub, VS Code |
-
-## 🚀 Projects
-
-### [Queensland Railway Interactive Map](https://github.com/vy-trg/qld-railway-map)
-Interactive map visualising Queensland's railway network using p5.js and GeoJSON data.  
-🌐 [Live Demo](https://vy-trg.github.io/qld-railway-map/)
-
-## 📫 Connect
-- LinkedIn: [linkedin.com/in/vytrg](https://linkedin.com/in/vytrg)
-- Email: vivian.trg3@gmail.com
+## Tech Stack
+JavaScript, p5.js, p5.play, HTML, CSS
