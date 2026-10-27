@@ -26,11 +26,13 @@ let route = [];
 function preload(){
     railways = loadJSON('railways.geojson');
     routes = loadStrings('routes.txt');
-    mapImg = loadImage('map.png');
+    mapImg = loadImage('map.jpg');
 }
 
 function setup() {
     createCanvas(800, 800);
+    const loadingText = document.getElementById('loading');
+    if (loadingText) loadingText.remove();
     for (let i = 0; i < railways.features.length; i++) { //extract station data from geoJSON
         let nameOfStation = railways.features[i].properties.NAME;
         let stationCoord = railways.features[i].geometry.coordinates; 

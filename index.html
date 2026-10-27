@@ -2,26 +2,35 @@
 <html lang="en">
 
   <head>
-    <title>1701ICT Task</title>
+    <title>Queensland Railway Interactive Map</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./images/icon.png">
+    <meta name="description" content="Interactive map of the South East Queensland rail network, built with JavaScript, p5.js and GeoJSON.">
     <style>
       body {
         padding: 0;
         margin: 0;
         background-color:#2e2e3e;
       }
+      #loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        color: #ffffff;
+        font-family: system-ui, sans-serif;
+        font-size: 20px;
+      }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="p5playv2/p5.play.js"></script>
-    <!-- <script src="./lib/p5/p5.sound.min.js"></script>
-    <script src="./lib/p5/planck.min.js"></script>
-    <script src="./lib/p5/p5.play.js"></script> -->
-    <script src="js/map.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script defer src="js/map.js"></script>
   </head>
 
   <body>
+    <main>
+      <p id="loading">Loading Queensland Railway Map…</p>
+    </main>
   </body>
 
 </html>

@@ -8,4 +8,4 @@ Interactive map visualising Queensland's railway network using p5.js and GeoJSON
 Visit the live site here: https://vy-trg.github.io/qld-railway-map/
 
 ## Tech Stack
-JavaScript, p5.js, p5.play, HTML, CSS
+JavaScript, p5.js, HTML, CSS
