@@ -10,10 +10,10 @@ let boxHeight = 70;
 let index = 0;
 let nextIndex = 0;
 
-let minLat = 152.946922527076;
-let maxLat = 153.180247019681;
-let minLon = 27.6049449522395;
-let maxLon = 27.3660874490119;
+let minLon = 152.946922527076;
+let maxLon = 153.180247019681;
+let minLat = 27.6049449522395;
+let maxLat = 27.3660874490119;
 
 let stationNames = [];
 let stationStatus = [];
@@ -38,31 +38,31 @@ function setup() {
         let stationCoord = railways.features[i].geometry.coordinates; 
         let railwayStationStatus = railways.features[i].properties.RAILSTATIONSTATUS; 
 
-        let lat = stationCoord[0];
-        let lon = stationCoord[1];
+        let lon = stationCoord[0];
+        let lat = stationCoord[1];
 
-        if (lat <= maxLat && lat >= minLat && lon <= maxLon * -1 && lon >= minLon * -1){ //filter stations based on visible area
+        if (lon <= maxLon && lon >= minLon && lat <= maxLat * -1 && lat >= minLat * -1){ //filter stations based on visible area
             stationNames.push(nameOfStation); //store the station’s data into separate arrays
-            xCoords.push(lat); 
-            yCoords.push(lon);
+            xCoords.push(lon); 
+            yCoords.push(lat);
             stationStatus.push(railwayStationStatus);
         }
     }
 
-    minLat = 152.918755; //update bounding box values to match the map image scaling
-    maxLat = 153.196618;
-    minLon = 27.605666;
-    maxLon = 27.358992;
+    minLon = 152.918755; //update bounding box values to match the map image scaling
+    maxLon = 153.196618;
+    minLat = 27.605666;
+    maxLat = 27.358992;
 
-    scalingFactorX = width / (maxLat - minLat); //pixels per degree of lat/lon
-    scalingFactorY = height / (maxLon - minLon);
+    scalingFactorX = width / (maxLon - minLon); //pixels per degree of lon/lat
+    scalingFactorY = height / (maxLat - minLat);
     
-    for (let i = 0; i < xCoords.length; i++) { //convert lat/lon to canvas coordinates
-        let lat = scalingFactorX*(xCoords[i] - minLat);
-        scaledXCoord[i] = lat;
+    for (let i = 0; i < xCoords.length; i++) { //convert lon/lat to canvas coordinates
+        let lon = scalingFactorX*(xCoords[i] - minLon);
+        scaledXCoord[i] = lon;
         
-        let lon = scalingFactorY*(yCoords[i] + minLon);
-        scaledYCoord[i] = lon + height;
+        let lat = scalingFactorY*(yCoords[i] + minLat);
+        scaledYCoord[i] = lat + height;
     }
 
     for (let i = 0; i < routes.length; i++) { //split route strings into individual station names
@@ -124,11 +124,11 @@ function drawRoutes (routeArray, routeColor) {
 
 function drawStations() {
     for (let i = 0; i < xCoords.length; i++) { 
-        let x = scaledXCoord[i]; //get the on-screen X and Y position of the current station (after scaling lat/lon to fit canvas)
+        let x = scaledXCoord[i]; //get the on-screen X and Y position of the current station (after scaling lon/lat to fit canvas)
         let y = scaledYCoord[i];
         let xBox = x - boxWidth / 2;
         let yBox = y + 10;
-        let xCoord = xCoords[i].toFixed(8); //format the actual lat/lon values to 8 decimal places for display
+        let xCoord = xCoords[i].toFixed(8); //format the actual lon/lat values to 8 decimal places for display
         let yCoord = yCoords[i].toFixed(8);
         
         noStroke();
@@ -152,7 +152,7 @@ function drawStations() {
             textSize(14);
             textAlign(CENTER);
             text("Name: " + stationNames[i], xBox, yBox + 5, boxWidth);
-            text("Latitude: " + xCoord + "\n Longitude: " + yCoord, xBox, yBox + 19, boxWidth);
+            text("Latitude: " + yCoord + "\n Longitude: " + xCoord, xBox, yBox + 19, boxWidth); //GeoJSON stores [longitude, latitude]
             text("Status: " + stationStatus[i], xBox + boxWidth / 2, yBox + 65);
         }
 
